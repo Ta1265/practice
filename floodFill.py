@@ -24,62 +24,26 @@
 
 class Solution:
 
+    #time complexity O(n)
     def floodFill(self, image, sr, sc, newColor): #returns List[List[int]]
 
-        oldColor = image[sc][sr]
+        totalRows = len(image)
+        totalCols = len(image[0])
+        oldColor = image[sr][sc]
 
+        if image[sr][sc] == newColor:
+            return image
+        
+        def depthFirstSearch(r, c):
+            if(image[r][c] == oldColor): # only connected to same color
+                image[r][c] = newColor
+                if(r >= 1):         depthFirstSearch(r-1, c) #traverse left row-wise
+                if(r+1 < totalRows):depthFirstSearch(r+1, c) #traverse right row-wise
+                if(c >= 1):         depthFirstSearch(r, c-1) #traverse down col-wise
+                if(c+1 < totalCols):depthFirstSearch(r, c+1) #traverse up col-wise
 
-        graphDict = {}
-
-        for col in range(0,len(image)):
-            for row in range(0,len(image[col])):
-                vertex = (col,row)
-                edges = []
-                k=0
-                #add edges to vertices in its own column
-                while( k < row):
-                    if(image[col][k] == oldColor):
-                        edges.append([col,k])
-                    k+=1
-                k+=1 #skip itself dont want an edge to itself
-                while(k < len(image[col])):
-                    if(image[col][k] == oldColor):
-                        edges.append([col,k])
-                    k+=1
-                #add edges to vertices in its own row
-                h=0
-                while(h < col):
-                    if(image[h][row] == oldColor):
-                        edges.append([h,row])
-                    h+=1
-                h+=1
-                while(h < len(image)):
-                    if(image[h][row] == oldColor):
-                        edges.append([h,row])
-                    h+=1
-                graphDict.update({vertex:edges})
-
-        self.fill(graphDict,image,sc,sr,newColor,oldColor)
-
-
-
+        depthFirstSearch(sr, sc)
         return image
-
-    def fill(self, graphDict, image, sc, sr, newColor,oldColor):
-
-        for pos in graphDict[(sc,sr)] : #iterates through the list edges lists
-            if(image[pos[0]][pos[1]] == oldColor):
-                image[pos[0]][pos[1]] = newColor
-                self.fill(graphDict,image,pos[0],pos[1], newColor,oldColor)
-            else: 
-                return
-        return
-
-    def myGr
-            
-
-
-
 
 def main():
 
