@@ -1,0 +1,187 @@
+special note!
+	/ division in python does floating point
+	// to do integer division(discard remainder
+
+	
+
+
+lists - (are dynamic arrays, doesnt have bare bones array) can store multiple data types
+
+(can be used like stacks/queues, but occure O(n) time to perform .pop/.pop(O), instead use a deque which has many same operations but is O(1) for queue / stack opterations
+
+	l = ["hello","world"]
+
+	operations
+
+	list[:] = list[-5:] + list[:-5] - move list 5 left
+	len(list) - returns length integer
+	l.append(x) - adds item to end of list
+	list.insert(i, x)
+	list.remove(x)
+	del a[0]
+	list.pop() - removes last element O(1)
+
+	list.popleft() - similar to queue
+	list.pop(i) -remove at index in O(n) and return
+	list.clear()
+	list.index(x[, start[, end]]) - slice operation
+	list.count(x)
+	list.sort(key=None, reverse=False) - in place (uses timsort avg time complexi.ty O(nlogn)
+	list.sorted() - returns new list of sorted 
+	list.reverse()
+	list.copy() - shallow copy 
+
+	List comprehensions
+	instead of 
+	>>> for x in range(10):
+       		squares.append(x**2)
+
+	use this to avoid leaving the x value behind when done
+	squares = [x**2 for x in range(10)]
+
+
+strings
+	string slicing
+	string[begin:end:stride] stride can be ommited and is 1 by default
+	string[::-1] reverses the string
+
+	
+	capitalize()	Converts the first character to upper case
+	casefold()	Converts string into lower case
+	center()	Returns a centered string
+	count()	Returns the number of times a specified value occurs in a string
+	encode()	Returns an encoded version of the string
+	endswith()	Returns true if the string ends with the specified value
+	expandtabs()	Sets the tab size of the string
+	find()	Sear
+ches the string for a specified value and returns the position of where it was found
+	format()	Formats specified values in a string
+	format_map()	Formats specified values in a string
+	index()	Searches the string for a specified value and returns the position of where it was found
+	isalnum()	Returns True if all characters in the string are alphanumeric
+	isalpha()	Returns True if all characters in the string are in the alphabet
+	isdecimal()	Returns True if all characters in the string are decimals
+	isdigit()	Returns True if all characters in the string are digits
+	isidentifier()	Returns True if the string is an identifier
+	islower()	Returns True if all characters in the string are lower case
+	isnumeric()	Returns True if all characters in the string are numeric
+	isprintable()	Returns True if all characters in the string are printable
+	isspace()	Returns True if all characters in the string are whitespaces
+	istitle()	Returns True if the string follows the rules of a title
+	isupper()	Returns True if all characters in the string are upper case
+	join()	Joins the elements of an iterable to the end of the string
+	ljust()	Returns a left justified version of the string
+	lower()	Converts a string into lower case
+	lstrip()	Returns a left trim version of the string
+	maketrans()	Returns a translation table to be used in translations
+	partition()	Returns a tuple where the string is parted into three parts
+	replace()	Returns a string where a specified value is replaced with a specified value
+	rfind()	Searches the string for a specified value and returns the last position of where it was found
+	rindex()	Searches the string for a specified value and returns the last position of where it was 			found
+	rjust()	Returns a right justified version of the string
+	rpartition()	Returns a tuple where the string is parted into three parts
+	rsplit()	Splits the string at the specified separator, and returns a list
+	rstrip()	Returns a right trim version of the string
+	split()	Splits the string at the specified separator, and returns a list
+	splitlines()	Splits the string at line breaks and returns a list
+	startswith()	Returns true if the string starts with the specified value
+	strip()	Returns a trimmed version of the string
+	swapcase()	Swaps cases, lower case becomes upper case and vice versa
+	title()	Converts the first character of each word to upper case
+	translate()	Returns a translated string
+	upper()	Converts a string into upper case
+	zfill()	Fills the string with a specified number of 0 values at the beginning
+	
+
+
+tuple - an immutable list kinda
+	print(thistuple[2:5]) #prints range of items items inclusive or -2:-5  for exlusive
+
+dictionaries (hash tables) (AKA associative array) - access items by name instead of index
+
+	c = {"favcolor":"hello world", "somthing":"somthing"}
+
+	dict.clear() removes all elements from dictionary
+	dict.copy() shallow copy of dictionary
+	dict.fromKey(key,value) returns a dictionary with the specified keys and values
+	dict.get(key,[value optional]) - return value of specific key
+	dict.items() returns a list containing a tuple for each key value pair
+	dict.keys(e) - return a list containing the dictionary's keys
+	dict.pop() - removes the element with the specified key
+	dict.popitem() - removes the key value pair
+	dict.setdefault()-returns value of specied key, it not exist insert the key with the specified value
+	dict.update({key:value}) - updates the dictionary with the specified key-value pair
+	dict.values() - returns a list of all values in the dictionary
+	
+
+set - Like list except not in any order does not allow repeat values
+
+	s = {1,2,3,4,5,6,6,6,6,6}
+	print(s) produces {1,2,3,4,5,6}
+	
+	operations:
+	len(s)
+	x in s
+	x not in s
+	s.issubset(t)
+	s.issuperset(t)
+	s.union(t)
+	s.intersection(t)
+
+loops- 
+
+-forloops
+	for item in b:
+		print(item)
+	ALSO
+	for i in range(0,10):
+		print(i)
+
+-whileloop
+	x = 10;
+	while x > 0:
+		print(x)
+		x -= 1
+
+
+exceptions - try catch blocks
+
+	try:
+		print(b[2])
+	except IndexError:
+		print("item not in list")
+
+functions
+	
+	def funct():
+		print("hello world")
+	funct()
+	-prints "hello world"
+	ALSO can run twice
+	funct();funct()
+	-prints "hello world"
+		"hello world"
+
+Objects
+
+	class Person:
+		##default constructor, runs when object is created
+		def __init__(self): 
+			print("new Person")
+
+	in main
+	p = Person()
+
+inheritance - Francis inherits methods from Person class
+
+	class Francis(Person)
+		def __init__(self):
+			super().__init__() ## initializes super class Person
+			print("my name is Francis")
+
+
+Modules - imports
+
+	import math
+
+	print(math.pi)

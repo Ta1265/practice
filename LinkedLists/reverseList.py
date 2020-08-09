@@ -34,11 +34,12 @@ class LinkedList:
 
 class Solution:
 
-    def reverseList(self,head) -> ListNode:
+    def reverseList(self,head)
 
-        #iterative = O(n)
+ 
+        # iterative = O(n)
         
-        # #iteratively
+        # iteratively
         # prev_ptr = None
         # curr_ptr = head
         # next_ptr = None
@@ -53,11 +54,12 @@ class Solution:
 
         # return head
 
-        ###recursively####
+        # ##recursively####
 
-        #base case walk through
-        #say we have 1->2->3
-        #head = 1
+        # base case walk through
+        # say we have 1->2->3
+        # head = 1
+        
         if(head == None or head.next == None):
             return head
         reverseListHeadNode = self.reverseList(head.next) #first pass in node 2, then 3, 3 hits if RLH rets 3

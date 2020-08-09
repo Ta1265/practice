@@ -1,0 +1,69 @@
+"""
+Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates).  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
+
+You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: ["bella","label","roller"]
+Output: ["e","l","l"]
+Example 2:
+
+Input: ["cool","lock","cook"]
+Output: ["c","o"]
+ 
+
+Note:
+
+1 <= A.length <= 100
+1 <= A[i].length <= 100
+A[i][j] is a lowercase letter
+
+"""
+
+class Solution:
+    def commonChars(self, A):
+
+        charDict = {}
+        ans = []
+        for char in A[0]:
+            charDict.update({char : A[0].count(char)})
+        
+        for i in range(1,len(A)):
+            for char in A[i]:
+                if char in charDict and A[i].count(char) < charDict[char]:
+                    charDict.update({char : A[i].count(char)})
+            poplist = []
+            for key in charDict:
+                if key not in A[i]:
+                    poplist.append(key)
+            for key in poplist:
+                charDict.pop(key)
+
+        for key in charDict:
+            for i in range(charDict[key]):
+                ans.append(key)
+
+
+        return ans
+         
+                
+
+
+        
+                
+            
+        
+
+
+def main():
+    A = ["cool","lock","cook"]
+
+    ans = Solution().commonChars(A)
+    print(ans)
+   
+
+if __name__ == '__main__':
+    main()
