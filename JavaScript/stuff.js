@@ -1,18 +1,13 @@
-var index = 0;
-var strNum = num.toString();
 
-if (strNum[0] === '-') {
-	var sum = -1 * Number(strNum[1]);
-	index = 2;
-	console.log(sum);
-} else {
-	console.log(sum);
-	var sum = Number(strNum[0]);
-	index = 1;
+function isOldEnoughToDrink(age) {
+	// if (age >= 21) {
+	// 	return true;
+	// }
+	// return false;
+
+	return age >= 21 ? true : false;
 }
 
-for (index; index < strNum.length; index++) {
-	console.log(sum);
-	sum += Number(strNum[index]);
-}
-return sum;
+
+var output = isOldEnoughToDrink(19);
+console.log(output); // --> true
