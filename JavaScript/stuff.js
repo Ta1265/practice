@@ -1,13 +1,14 @@
+function cube(radius) {
 
-function isOldEnoughToDrink(age) {
-	// if (age >= 21) {
-	// 	return true;
+	// let orig = num;
+
+	// for (let x = 1; x < 3; x++) {
+	// 	num = num * orig;
+	// 	console.log(num, x, orig)
 	// }
-	// return false;
+	// return num
+	return Math.sqrt(radius);
 
-	return age >= 21 ? true : false;
 }
 
-
-var output = isOldEnoughToDrink(19);
-console.log(output); // --> true
+console.log(cube(121));
