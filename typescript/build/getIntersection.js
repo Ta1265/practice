@@ -1,3 +1,4 @@
+"use strict";
 /*
 Write a program to find the node at which the intersection of two singly linked lists begins.
 
@@ -57,7 +58,6 @@ function getIntersection(head1, head2) {
     var temp2 = head2;
     while (temp1 !== null) {
         while (temp2 !== null) {
-            console.log(temp1.val, temp2.val);
             if (temp1 === temp2)
                 return temp1;
             temp2 = temp2.next;
