@@ -48,46 +48,46 @@ Your code should preferably run in O(n) time and use only O(1) memory.
 //   val: number;
 // }
 
-class ListNode {
-  public next: ListNode | null;
-  public val: number;
-  constructor(val: number) {
-    this.val = val;
-    this.next = null;
-  }
-}
+// class ListNode {
+//   public next: ListNode | null;
+//   public val: number;
+//   constructor(val: number) {
+//     this.val = val;
+//     this.next = null;
+//   }
+// }
 
 
 
 
-function getIntersection(head1: ListNode, head2: ListNode) {
-  let temp1 = head1;
-  let temp2 = head2;
+// function getIntersection(head1: ListNode, head2: ListNode) {
+//   let temp1 = head1;
+//   let temp2 = head2;
 
-  while (temp1 !== null) {
-    while (temp2 !== null) {
-      if (temp1 === temp2) return temp1;
-      temp2 = temp2.next;
-    }
-    temp1 = temp1.next
-    temp2 = head2;
-  }
-  return null;
-}
+//   while (temp1 !== null) {
+//     while (temp2 !== null) {
+//       if (temp1 === temp2) return temp1;
+//       temp2 = temp2.next;
+//     }
+//     temp1 = temp1.next
+//     temp2 = head2;
+//   }
+//   return null;
+// }
 
-function test(): void {
-  let head1 = new ListNode(1);
-  head1.next = new ListNode(2);
-  head1.next.next = new ListNode(3);
-  let head2 = new ListNode(10);
-  head2.next = new ListNode(20);
-  head2.next.next = head1.next.next;
+// function test(): void {
+//   let head1 = new ListNode(1);
+//   head1.next = new ListNode(2);
+//   head1.next.next = new ListNode(3);
+//   let head2 = new ListNode(10);
+//   head2.next = new ListNode(20);
+//   head2.next.next = head1.next.next;
 
-  console.log(getIntersection(head1, head2), 'expected to be 3');
-  console.log(head2);
-  console.log(head1);
+//   console.log(getIntersection(head1, head2), 'expected to be 3');
+//   console.log(head2);
+//   console.log(head1);
 
 
-};
+// };
 
-test();
+// test();
