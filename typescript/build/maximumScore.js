@@ -57,7 +57,7 @@ Constraints:
  * @return {number}
  */
 var maximumScore = function (a, b, c) {
-    var empty = 0;
+    let empty = 0;
     if (a === 0)
         empty += 1;
     if (b === 0)
@@ -76,7 +76,7 @@ var maximumScore = function (a, b, c) {
         return maximumScore(a, b - 1, c - 1) + 1;
     }
 };
-var maxScore_Tester = function () {
+const maxScore_Tester = () => {
     console.log(maximumScore(4, 4, 6), 'expecting 7');
     console.log(maximumScore(2, 4, 6), 'expecting 6');
 };

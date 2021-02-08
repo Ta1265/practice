@@ -50,9 +50,9 @@ Constraints:
 1 <= nums.length <= 100
 1 <= nums[i] <= 100
 */
-var checkSorted = function (nums) {
-    var rotated;
-    var i = 0;
+const checkSorted = (nums) => {
+    let rotated;
+    let i = 0;
     while (i + 1 < nums.length - 1) {
         if (nums[i] > nums[i + 1]) {
             if (rotated) {
@@ -69,8 +69,8 @@ var checkSorted = function (nums) {
     }
     return true;
 };
-var checkSortedTester = function () {
-    var nums1 = [3, 4, 5, 1, 2];
+const checkSortedTester = () => {
+    const nums1 = [3, 4, 5, 1, 2];
     console.log(checkSorted(nums1), 'expecting false');
 };
 checkSortedTester();

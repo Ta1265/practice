@@ -36,17 +36,17 @@ Constraints:
 s consists of parentheses only '()[]{}'.
 
 */
-var openParens = {
+let openParens = {
     '{': true,
     '[': true,
     '(': true,
 };
-var closeParens = {
+let closeParens = {
     '}': true,
     ']': true,
     ')': true,
 };
-var opositeParens = {
+let opositeParens = {
     '}': '{',
     ']': '[',
     ')': '(',
@@ -55,19 +55,19 @@ var opositeParens = {
     '(': ')',
 };
 var isValid = function (s) {
-    var stack = [];
-    for (var i = 0; i < s.length; i++) {
+    const stack = [];
+    for (let i = 0; i < s.length; i++) {
         if (openParens[s[i]])
             stack.push(s[i]);
         if (closeParens[s[i]]) {
-            var top_1 = stack.pop();
-            if (opositeParens[top_1] !== s[i])
+            let top = stack.pop();
+            if (opositeParens[top] !== s[i])
                 return false;
         }
     }
     return stack.length === 0 ? true : false;
 };
-var tester = function () {
+const tester = () => {
     console.log(isValid(')'), 'expected to be false');
     console.log(isValid('(('), 'expected to be false');
     console.log(isValid('()'), 'execpt to be true');

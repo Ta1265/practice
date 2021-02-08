@@ -43,10 +43,10 @@ nums contains distinct values sorted in ascending order.
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function (nums, target) {
-    var left = 0;
-    var right = nums.length - 1;
-    var mid;
+const searchInsert = function (nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    let mid;
     while (left <= right) {
         mid = Math.floor((left + right) / 2);
         if (nums[mid] < target)
@@ -56,7 +56,7 @@ var searchInsert = function (nums, target) {
     }
     return left;
 };
-var searchInsertTester = function () {
+const searchInsertTester = function () {
     console.log(searchInsert([1, 3, 5, 6], 5), 'expecting 2');
     console.log(searchInsert([1, 3, 5, 6], 2), 'expecting 1');
     console.log(searchInsert([1, 3, 5, 6], 7), 'expecting 4');

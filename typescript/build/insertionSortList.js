@@ -39,17 +39,16 @@ Output: -1->0->3->4->5
 //   val: number;
 //   next: ListNode | null;
 // }
-var ListNode = /** @class */ (function () {
-    function ListNode(val, next) {
+class ListNode {
+    constructor(val, next) {
         this.val = val;
         this.next = next;
     }
-    return ListNode;
-}());
-var makeList = function (vals) {
-    var head = new ListNode(vals[0], null);
-    var temp = head;
-    var i = 1;
+}
+const makeList = (vals) => {
+    let head = new ListNode(vals[0], null);
+    let temp = head;
+    let i = 1;
     while (i < vals.length) {
         temp.next = new ListNode(vals[i], null);
         temp = temp.next;
@@ -60,12 +59,12 @@ var makeList = function (vals) {
 var insertionSortList = function (head) {
     if (head === null || head.next === null)
         return head;
-    var cur = head.next;
-    var iter = head;
+    let cur = head.next;
+    let iter = head;
     while (cur !== null) {
         while (iter !== cur) {
             if (cur.val < iter.val) {
-                var temp = cur.val;
+                let temp = cur.val;
                 cur.val = iter.val;
                 iter.val = temp;
             }
@@ -79,19 +78,19 @@ var insertionSortList = function (head) {
     return head;
 };
 function insertionSortList_tester() {
-    var input1 = makeList([4, 2, 1, 3]);
+    const input1 = makeList([4, 2, 1, 3]);
     console.log(insertionSortList(input1));
-    var input2 = makeList([-1, 5, 3, 4, 0]);
-    var ans2 = insertionSortList(input2);
-    var ans2list = [];
+    const input2 = makeList([-1, 5, 3, 4, 0]);
+    let ans2 = insertionSortList(input2);
+    const ans2list = [];
     while (ans2 !== null) {
         ans2list.push(ans2.val);
         ans2 = ans2.next;
     }
     console.log('ans2list=', ans2list);
-    var input3 = makeList([]);
-    var ans3 = insertionSortList(input3);
-    var ans3list = [];
+    const input3 = makeList([]);
+    let ans3 = insertionSortList(input3);
+    const ans3list = [];
     while (ans3 !== null) {
         ans3list.push(ans3.val);
         ans3 = ans3.next;

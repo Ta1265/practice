@@ -40,26 +40,26 @@ s consist of only digits and English letters (lower-case and/or upper-case),
 
 
 */
-var longestPalindrome = function (s) {
-    var longest = '';
-    var checker = function (substr) {
+const longestPalindrome = function (s) {
+    let longest = '';
+    const checker = (substr) => {
         if (substr.length <= longest.length)
             return;
-        var lastchar = substr.length - 1;
-        for (var i = 0; i < substr.length; i += 1) {
+        const lastchar = substr.length - 1;
+        for (let i = 0; i < substr.length; i += 1) {
             if (substr[i] !== substr[lastchar - i])
                 return;
         }
         longest = substr;
     };
-    for (var i = 0; i < s.length; i++) {
-        for (var j = i; j < s.length + 1; j++) {
+    for (let i = 0; i < s.length; i++) {
+        for (let j = i; j < s.length + 1; j++) {
             j === 0 ? checker(s[0]) : checker(s.slice(i, j));
         }
     }
     return longest;
 };
-var longestPalindromeTester = function () {
+const longestPalindromeTester = () => {
     console.log(longestPalindrome('babad'), ' - expect to be "bab" or "aba');
     console.log(longestPalindrome('cbbd'), ' - expect to be "bb"');
     console.log(longestPalindrome('a'), ' - expect to be "a"');

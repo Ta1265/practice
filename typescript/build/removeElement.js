@@ -60,8 +60,8 @@ Constraints:
  * @return {number}
  */
 var removeElement = function (nums, val) {
-    var last = nums.length - 1;
-    for (var i = 0; i <= last; i++) {
+    let last = nums.length - 1;
+    for (let i = 0; i <= last; i++) {
         while (i <= last && nums[i] === val) {
             nums[i] = nums[last];
             last--;
@@ -70,10 +70,10 @@ var removeElement = function (nums, val) {
     console.log(nums);
     return last + 1;
 };
-var removeElementTester = function () {
-    var arr = [3, 2, 2, 3];
-    var ans = removeElement([3, 2, 2, 3], 3);
-    var ansarr = arr.slice(0, ans);
+const removeElementTester = () => {
+    const arr = [3, 2, 2, 3];
+    const ans = removeElement([3, 2, 2, 3], 3);
+    const ansarr = arr.slice(0, ans);
     console.log(ans, arr, 'expecting 2 and [2,2]');
     console.log(removeElement([1], 1));
     console.log(removeElement([], 1));
