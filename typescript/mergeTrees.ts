@@ -46,7 +46,7 @@ The number of nodes in both trees is in the range [0, 2000].
 //   right: TreeNode | null;
 // }
 
-class TreeNode {
+class iTreeNode {
     public val: number;
     public left: TreeNode | null;
     public right: TreeNode | null;

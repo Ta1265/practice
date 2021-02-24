@@ -45,7 +45,7 @@ The number of nodes in both trees is in the range [0, 2000].
 //   left: TreeNode | null;
 //   right: TreeNode | null;
 // }
-class TreeNode {
+class iTreeNode {
     constructor(val, left, right) {
         this.val = val;
         this.left = left;
