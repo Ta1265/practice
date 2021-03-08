@@ -8,10 +8,7 @@ Return the merged tree.
 
 Note: The merging process must start from the root nodes of both trees.
 
-
-
 Example 1:
-
 
 Input: root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]
 Output: [3,4,5,5,4,null,7]
@@ -19,7 +16,6 @@ Example 2:
 
 Input: root1 = [1], root2 = [1,2]
 Output: [2,2]
-
 
 Constraints:
 
@@ -46,44 +42,25 @@ The number of nodes in both trees is in the range [0, 2000].
 //   right: TreeNode | null;
 // }
 
-class iTreeNode {
-    public val: number;
-    public left: TreeNode | null;
-    public right: TreeNode | null;
-
-    constructor(val: number, left: TreeNode | null, right: TreeNode | null) {
-      this.val = val;
-      this.left = left;
-      this.right = right;
-    }
+class TreeNode {
+  constructor(
+    public val: number | null | undefined,
+    public left: TreeNode | null | undefined,
+    public right: TreeNode | null | undefined,
+  ) {}
 }
 
-class BinaryTree {
-  public root: TreeNode | null;
-  constructor (vals: Array<number>) {
-    this.buildTree(vals);
-  }
-
-  buildTree(vals:Array<number>): void {
-
-    const nodes = vals.map((val) => val === null ? null : new TreeNode(val, null, null));
-    nodes.forEach((node, index) => {
-      if (node !== null) {
-        node.left = nodes[(index*2) + 1];
-        node.right = nodes[(index*2) + 2];
-      }
-    });
-    this.root = nodes[0];
-  }
-
-  printTree() {
-    console.log(this.root);
-  }
-
+function buildTree2(vals:Array<number>): TreeNode {
+  const nodes = vals.map((val) => (val === null ? null : new TreeNode(val, null, null)));
+  nodes.forEach((node, index) => {
+    if (node === null) return;
+    node.left = nodes[(index * 2) + 1];
+    node.right = nodes[(index * 2) + 2];
+  });
+  return nodes[0];
 }
 
-
-var mergeTrees = function(root1: TreeNode, root2: TreeNode): TreeNode {
+function mergeTrees(root1: TreeNode, root2: TreeNode): TreeNode {
   if (!root1 || root1 === null) return root2;
   if (!root2 || root2 === null) return root1;
   root1.val += root2.val;
@@ -111,7 +88,6 @@ var mergeTrees = function(root1: TreeNode, root2: TreeNode): TreeNode {
   //   }
   //   return valStack;
   // }
-
   // const list1 = levelOrder(root1);
   // const list2 = levelOrder(root2);
   // const ansList = []
@@ -129,12 +105,10 @@ var mergeTrees = function(root1: TreeNode, root2: TreeNode): TreeNode {
   //   }
   // });
   // return nodesList[0];
+}
 
-};
-
-
-(function() {
-  const tree1 = new BinaryTree([1,3,2,5]);
-  const tree2 = new BinaryTree([2,1,3,null,4,null,7])
+(function () {
+  const tree1 = new BinaryTree([1, 3, 2, 5]);
+  const tree2 = new BinaryTree([2, 1, 3, null, 4, null, 7]);
   console.log(mergeTrees(tree1.root, tree2.root));
 }());

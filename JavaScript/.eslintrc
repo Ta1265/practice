@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "no-console": "off",
+    "no-param-reassign": "off"
+  },
+  "env": {
+    "jest": true,
+    "browser": true
+  }
+}

@@ -8,8 +8,6 @@ Return an array answer of size n, where answer[i] is the minimum number of opera
 
 Each answer[i] is calculated considering the initial state of the boxes.
 
-
-
 Example 1:
 
 Input: boxes = "110"
@@ -23,7 +21,6 @@ Example 2:
 Input: boxes = "001011"
 Output: [11,8,5,4,3,4]
 
-
 Constraints:
 
 n == boxes.length
@@ -35,8 +32,7 @@ boxes[i] is either '0' or '1'.
  * @param {string} boxes
  * @return {number[]}
  */
-var minOperations = function(boxes: string): number[] {
-
+const minOperations = function (boxes: string): number[] {
   const leftpass = Array(boxes.length).fill(0);
   const rightpass = Array(boxes.length).fill(0);
   let ones: number;
@@ -44,25 +40,22 @@ var minOperations = function(boxes: string): number[] {
   // O(n)
   ones = boxes[0] === '1' ? 1 : 0;
   for (let i = 1; i < boxes.length; i += 1) {
-    leftpass[i] = leftpass[i-1] + ones;
+    leftpass[i] = leftpass[i - 1] + ones;
     if (boxes[i] === '1') ones += 1;
   }
   // O(n)
-  ones = boxes[boxes.length-1] === '1' ? 1 : 0;
+  ones = boxes[boxes.length - 1] === '1' ? 1 : 0;
   for (let i = boxes.length - 2; i >= 0; i -= 1) {
-    rightpass[i] = rightpass[i+1] + ones;
+    rightpass[i] = rightpass[i + 1] + ones;
     if (boxes[i] === '1') ones += 1;
   }
   // O(n)
   const output = [];
-  for(var i = 0; i < leftpass.length; i += 1)  {
+  for (let i = 0; i < leftpass.length; i += 1) {
     output[i] = rightpass[i] + leftpass[i];
   }
   // O(3n) ~ O(n)
   return output;
-
-
-
 
   // O(n^2) solution
   // const output = Array(boxes.length).fill(0);

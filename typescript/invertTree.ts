@@ -28,25 +28,23 @@ Google: 90% of our engineers use the software you wrote (Homebrew), but you canâ
 
 // Definition for a binary tree node.
 
-
 class TreeNode {
   constructor(
     public val: number | null | undefined,
     public left: TreeNode | null | undefined,
     public right: TreeNode | null | undefined,
-  ) {};
+  ) {}
 }
 
 function buildTree(vals:Array<number>): TreeNode {
-  const nodes = vals.map((val) => val === null ? null : new TreeNode(val, null, null));
+  const nodes = vals.map((val) => (val === null ? null : new TreeNode(val, null, null)));
   nodes.forEach((node, index) => {
     if (node === null) return;
-    node.left = nodes[(index*2) + 1];
-    node.right = nodes[(index*2) + 2];
+    node.left = nodes[(index * 2) + 1];
+    node.right = nodes[(index * 2) + 2];
   });
   return nodes[0];
 }
-
 
 /**
  * Definition for a binary tree node.
@@ -60,7 +58,7 @@ function buildTree(vals:Array<number>): TreeNode {
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-var invertTree = function(root: TreeNode): TreeNode {
+var invertTree = function (root: TreeNode): TreeNode {
   // // iterative solution
   // if (root === null) return root;
   // const queue = [root];
@@ -81,11 +79,9 @@ var invertTree = function(root: TreeNode): TreeNode {
   invertTree(root.left);
   invertTree(root.right);
   return root;
-
 };
 
-
-(function(){
-  const tree1 = buildTree([4,2,7,1,3,6,9]);
-  console.log(invertTree(tree1));
+(function () {
+  const tree1 = buildTree([4, 2, 7, 1, 3, 6, 9]);
+  con;
 }());
