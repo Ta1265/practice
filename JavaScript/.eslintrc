@@ -2,7 +2,8 @@
   "extends": "airbnb",
   "rules": {
     "no-console": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "func-names": "off"
   },
   "env": {
     "jest": true,
