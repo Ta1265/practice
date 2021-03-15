@@ -3,7 +3,9 @@
   "rules": {
     "no-console": "off",
     "no-param-reassign": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "no-var": "off",
+    "no-unused-vars": "warn"
   },
   "env": {
     "jest": true,
