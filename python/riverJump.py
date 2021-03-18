@@ -24,7 +24,8 @@
 # 0 <= stones[i] <= 231 - 1
 # stones[0] == 0
 
-class Solution():
+
+class Solution:
     def canCross(self, stones):
         stoneDict = {i: n for n, i in enumerate(stones)}
         badpathMemo = set()  # sets of tuples (pos, k)
@@ -40,7 +41,7 @@ class Solution():
             return False
         if pos not in stoneDict:
             return False
-        for dist in [k-1, k, k+1]:
+        for dist in [k - 1, k, k + 1]:
             if self.recurse(pos + dist, dist, stones, badpathMemo, stoneDict):
                 return True
         badpathMemo.add((pos, k))
@@ -71,5 +72,5 @@ def main():
     print(Solution().canCross([0, 1, 2, 3, 4, 8, 9, 11]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
