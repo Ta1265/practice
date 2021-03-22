@@ -41,59 +41,53 @@ All the pairs (ui, vi) are unique. (i.e., no multiple edges.)
  */
 
 var networkDelayTime = function (times, n, k) {
-  const graph = {};
-  for (let i = 1; i <= n; i += 1) graph[i] = [];
 
-  for (let i = 0; i < times.length; i += 1) {
-    const [u, v, w] = times[i];
-    graph[v].push([u, w]); // reverse the paths
-  }
-
-  const pathsToK = {}; // node: shortest path to start;
-  const dfs = (u, dist) => {
-    if (u === k) return dist;
-    let shortest = Number.POSITIVE_INFINITY;
-    for (let i = 0; i < graph[u].length; i += 1) {
-      const [v, w] = graph[u][i];
-      shortest = Math.min(shortest, dfs(v, w + dist));
-    }
-    return shortest; // reach a dead end we return infinity (never shortest path)
-  };
-
-  let longestOfShortest = -1;
-  for (let i = 1; i <= n; i += 1) {
-    longestOfShortest = Math.max(longestOfShortest, dfs(i, 0));
-  }
-  return longestOfShortest !== Number.POSITIVE_INFINITY ? longestOfShortest : -1;
-
-  // const graph = {};
-  // for (let i = 0; i < times.length; i += 1) {
-  //   const [u, v, w] = times[i];
-  //   const edge = [v, w];
-  //   graph[u] = graph[u] ? [...graph[u], edge] : [edge];
-  // }
-  // const pathTo = {};
-  // function findPaths(u, curDist) {
-  //   if (pathTo[u] === undefined) pathTo[u] = curDist;
-  //   else pathTo[u] = Math.min(curDist, pathTo[u]);
-  //   while (graph[u] && graph[u].length > 0) {
-  //     const [v, w] = graph[u].pop();
-  //     findPaths(v, curDist + w);
-  //   }
-  // }
-  // findPaths(k, 0);
-  // let longestPath = 0;
-  // for (let i = 1; i <= n; i += 1) {
-  //   if (pathTo[i] === undefined) return -1;
-  //   longestPath = Math.max(pathTo[i], longestPath);
-  // }
-  // return longestPath;
 };
 
+var shortestPath = function (edges, k) {
+  const graph = { /* v: [[v, w]], */ };
+  // const dj = { /* v: [shortestDistK, PrevVertex]*/ };
+  for (let i = 0; i < edges.length; i += 1) {
+    const [u, v, w] = edges[i];
+    if (!dj[u]) dj[u] = [Number.POSITIVE_INFINITY, null];
+    if (!graph[u]) graph[u] = [];
+    if (!graph[v]) graph[v] = [];
+    graph[u].push([v, w]);
+    graph[v].push([u, w]);
+  }
+
+  const visit = (curV, prevV, weight) => {
+    const alreadyCalcDistToK = dj[curV][0]; //starts at infinity
+    const calcDistCurToK = weight + (prevV ? dj[prevV][0] : 0);
+    if (calcDistCurToK < alreadyCalcDistToK) {
+      dj[curV] = [calcDistCurToK, prevV];
+      const paths = graph[curV];
+      for (let i = 0; i < paths.length; i += 1) {
+        const [v, w] = paths[i];
+        visit(v, curV, w);
+      }
+    }
+  };
+  dj[k] = [0, null];
+  visit(k, null, 0);
+  console.log(dj);
+};
 (function () {
-  console.log(networkDelayTime([[2, 1, 1], [2, 3, 1], [3, 4, 1]], 4, 2), 'expecting 2');
-  console.log(networkDelayTime([[1, 2, 1]], 2, 1), 'expecting 1');
-  console.log(networkDelayTime([[1, 2, 1]], 2, 2), 'expecting -1');
-  console.log(networkDelayTime([[1, 2, 1], [2, 1, 3]], 2, 2), 'expecting 3');
-  console.log(networkDelayTime([[1, 2, 1], [2, 3, 2], [1, 3, 2]], 3, 1), 'expecting 2');
+  const edges = [
+    [1, 2, 6],
+    [1, 4, 1],
+    [4, 2, 2],
+    [4, 5, 1],
+    [5, 2, 2],
+    [2, 5, 3],
+    [5, 3, 5],
+    [2, 3, 5],
+  ];
+  console.log(shortestPath(edges, 1), 'expecting ?');
+
+  // console.log(networkDelayTime([[2, 1, 1], [2, 3, 1], [3, 4, 1]], 4, 2), 'expecting 2');
+  // console.log(networkDelayTime([[1, 2, 1]], 2, 1), 'expecting 1');
+  // console.log(networkDelayTime([[1, 2, 1]], 2, 2), 'expecting -1');
+  // console.log(networkDelayTime([[1, 2, 1], [2, 1, 3]], 2, 2), 'expecting 3');
+  // console.log(networkDelayTime([[1, 2, 1], [2, 3, 2], [1, 3, 2]], 3, 1), 'expecting 2');
 }());
