@@ -37,7 +37,7 @@ each element of array A is an integer within the range [1..(N + 1)].
 //   const sumA = A.reduce((memo, num) => memo + num);
 //   // the difference between what we have(sumA) and sumN what we should have is the missing element
 //   return sumN - sumA;
-// }
+// t pu}
 
 function missingNumber(nums) {
   // since we start at 0 the length of what we should have is
