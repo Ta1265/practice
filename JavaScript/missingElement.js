@@ -35,7 +35,7 @@ each element of array A is an integer within the range [1..(N + 1)].
 //   for (let i = 0; i <= N; i += 1) sumN += i;
 //   // since we are missing an element we sum all n that we have
 //   const sumA = A.reduce((memo, num) => memo + num);
-//   // the difference between what we have(sumA) and sumN what we should have is the missing element
+//   // the difference between what we have(sumA)and sumN what we should have is the missing element
 //   return sumN - sumA;
 // t pu}
 
