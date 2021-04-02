@@ -20,7 +20,8 @@ A ≤ B.
 */
 
 function solution(A, B, K) {
-  return Math.floor((B - A) / K) + ((A % K === 0 || B % K === 0) ? 1 : 0);
+  // return Math.floor((B - A) / K) + ((A % K === 0 || B % K === 0) ? 1 : 0);A
+  return
 }
 
 (function () {
