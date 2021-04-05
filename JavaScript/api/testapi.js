@@ -9,7 +9,7 @@ const candidates = [
   {
     id: 'person1',
     name: 'Amy Fish',
-    skills: ['scala', 'go'],
+    skills: ['scala', 'go', 'python'],
   },
   {
     id: 'person2',
@@ -30,15 +30,18 @@ app.post('/candidates', (req, res) => {
 
 app.get('/candidates/search?:skills', (req, res) => {
   const searchSkills = new Set();
+  if (req.query.skills.length <= 0) return res.sendStatus(400);
   req.query.skills.split(',').map((s) => searchSkills.add(s));
 
-  const best = candidates.map((c) => [c, c.skills.filter((s) => searchSkills.has(s)).length])
-    .reduce((most, cur) => cur[1] > most[1] ? cur : most)[0];
-  console.log(best);
-  if (best) {
+  const validCandidates = candidates
+    .map((c) => [c, c.skills.filter((s) => searchSkills.has(s)).length])
+    .filter((c) => c[1] > 0);
+
+  if (validCandidates.length > 0) {
+    const best = validCandidates.reduce((most, cur) => cur[1] > most[1] ? cur : most)[0];
     res.status(200).json(best);
   } else {
-    res.send(404);
+    res.sendStatus(404);
   }
 });
 
