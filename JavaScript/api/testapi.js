@@ -29,8 +29,9 @@ app.post('/candidates', (req, res) => {
 });
 
 app.get('/candidates/search?:skills', (req, res) => {
-  const searchSkills = new Set();
   if (req.query.skills.length <= 0) return res.sendStatus(400);
+
+  const searchSkills = new Set();
   req.query.skills.split(',').map((s) => searchSkills.add(s));
 
   const validCandidates = candidates
